@@ -13,7 +13,12 @@ function DeliveryAddress() {
                         <SmallMenu></SmallMenu>
                     </div>
                     <div className='col-md-8 address-col-backgound'>
+                        <div>
                         <GetDeliveryAddress />
+                        </div>
+                        <div>
+                            <button className="addAdd-btn">Thêm địa chỉ mới</button>
+                        </div>
                     </div>
                     <div className='col-md-2'></div>
                 </div>

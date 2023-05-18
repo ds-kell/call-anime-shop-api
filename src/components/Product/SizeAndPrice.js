@@ -12,7 +12,6 @@ const SizeAndPrice = ({ productDetails }) => {
         setSelectedPrice(price);
         setDiscountPrice(discount)
         setAvailableQuantity(countInStock);
-        setQuantity(1);
         setMessageQuantity("")
         setSelectedProductDetailId(productDetailId)
 

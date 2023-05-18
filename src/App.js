@@ -9,9 +9,9 @@ import ProductDetail from './components/Product/ProductDetail';
 import GetCart from './components/Cart/GetCart';
 import UserProfile from './components/Profile/UserProfile';
 import DeliveryAddress from './components/Address/DeliveryAddress';
+import Checkout from './components/Checkout/Checkout';
 function App() {
   const { token, setToken } = useToken();
-
   return (
     <>
       <Navbar />
@@ -19,10 +19,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path='/register' element={<SignUp setToken={setToken} />} />
-        {/* <Route path="/products/:productId" render={(props) => <ProductDetail productId={props.match.params.productId} />} /> */}
-        {/* <Route path="/products/:productId" component={ProductDetail} /> */}
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path='/cart' element={<GetCart />} />
+        {/* <Route path='/checkout' component={<Checkout />} /> */}
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='/profile' element={<UserProfile />} />
         <Route path='/address' element={<DeliveryAddress />} />
 

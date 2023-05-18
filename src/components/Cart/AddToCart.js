@@ -51,16 +51,6 @@ const AddToCart = ({ productDetailId, quantity }) => {
       productDetailId,
       quantity
     };
-    // axios
-    //   .post('http://localhost:8088/api/user/cart/add-product', payload)
-    //   .then(response => {
-    //     // Xử lý phản hồi thành công (nếu cần)
-    //     console.log(response.data);
-    //   })
-    //   .catch(error => {
-    //     // Xử lý lỗi (nếu có)
-    //     console.error(error);
-    //   });
   };
   return (
     <div>

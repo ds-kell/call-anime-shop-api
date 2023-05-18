@@ -47,7 +47,12 @@ function Navbar() {
   return (
     <div className='menu-bar'>
       <div className='row operations'>
-        <div className='col-md-10'></div>
+        <div className='col-md-8'></div>
+        <div className='col-md-2'>
+          <a>Thông báo | </a>
+          <a>Hỗ trợ | </a>
+          <a>Ngôn ngữ </a>
+        </div>
         <div className='col-md-2 log-blk'>
           {uToken ? (
             <div style={{ position: 'relative' }}>
@@ -57,7 +62,7 @@ function Navbar() {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                {savedUsername}
+          {savedUsername}
               </a>
               {(isHovered || isHoveredOutside) && (
                 <div className='hover-logout'

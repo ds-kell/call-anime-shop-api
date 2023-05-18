@@ -7,3 +7,16 @@
 .address-col-backgound{
     background-color: white;
 }
+.addAdd-btn {
+    background-color: #9ac8ca;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  .addAdd-btn:hover {
+    background-color: #deedee;
+    color: rgba(0, 0, 0, 0.925);
+  }
