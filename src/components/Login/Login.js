@@ -1,101 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 async function loginUser(credentials) {
-  return fetch('http://localhost:8081/api/auth/signin', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
+  try {
+    const response = await axios.post('http://localhost:8088/api/auth/signin', credentials);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.message); // Ném lỗi với thông báo từ API
+    } else {
+      throw error;
+    }
+  }
 }
 
 export default function Login({ setToken }) {
-  // const navigate = useNavigate()
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(''); // Thêm state mới để lưu trữ thông báo lỗi
+  const navigate = useNavigate();
+  const [shouldNavigate, setNavigate] = useState(false);
+
+  useEffect(() => {
+    if (shouldNavigate) {
+      navigate('/');
+    }
+  }, [shouldNavigate, navigate]);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
-    setToken(token);
-    // navigate('/home')
+    try {
+      const token = await loginUser({
+        username,
+        password
+      });
+      if (token) {
+        setToken(token);
+        setNavigate(true);
+        localStorage.setItem('username', username);
+      }
+    } catch (error) {
+      setError(error.message); // Lưu trữ thông báo lỗi trong state error
+    }
   }
 
   return (
-    <div>
-
-      <div class='row'>
-        <div class="col-md-6">
-          {/* <div className='logo'>
-            <img src={logo} alt="Logo" />
-          </div> */}
+    <div className='row'>
+      <div className="col-md-4">
+      </div>
+      <div className="col-md-4">
+        <div className='login_block'>
+          <form onSubmit={handleSubmit}>
+            <div className='input_block'>
+              <label>
+                <input className='input' type="text" onChange={e => setUserName(e.target.value)} placeholder='Username' />
+              </label><br></br>
+              <label>
+                <input className='input' type="password" onChange={e => setPassword(e.target.value)} placeholder='Password' />
+              </label>
+            </div>
+            <div className='submitBtn'>
+              {error && <div className='error-message'>{error}</div>} {/* Hiển thị thông báo lỗi */}
+              <button type="submit">Đăng nhập</button>
+            </div>
+          </form>
         </div>
-        <div class="col-md-6" >
-          <div class='row'>
-            <div className='top'>
-              <br></br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-1">
-              <div className='cot1'>
-                {/* cột 1 */}
-              </div>
-            </div>
-            <div class="col-md-9">
-              <div className='cot2'>
-                <div class='row'>
-                  <div class="shop_title">
-                    <h1>VaAnh</h1>
-                    <h3>I don't do fashion, I am Fashion</h3>
-                    <p>________________***______________</p>
-                  </div>
-                </div>
-
-                <div class='row'>
-                  <div className='login_block'>
-                    <form onSubmit={handleSubmit}>
-                      <div className='input_block'>
-                        <label>
-                          <input className='input' type="text" onChange={e => setUserName(e.target.value)} placeholder='Username' />
-                        </label><br></br>
-                        <label>
-                          <input className='input' type="password" onChange={e => setPassword(e.target.value)} placeholder='Password' />
-                        </label>
-                      </div>
-                      <div className='submitBtn'>
-                        <button type="submit">Đăng nhập</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            <div class="col-md-2" >
-              <div className='cot3'>
-                {/* cột 2 */}
-              </div>
-            </div>
-          </div>
-          <div class='row'>
-            <div className='bot'>
-              <br></br>
-            </div>
-          </div>
-        </div>
+      </div>
+      <div className="col-md-4">
       </div>
     </div>
   )
@@ -104,3 +79,5 @@ export default function Login({ setToken }) {
 Login.propTypes = {
   setToken: PropTypes.func.isRequired
 };
+
+export { loginUser };

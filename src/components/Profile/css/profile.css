@@ -1,0 +1,44 @@
+.fullname, .dob, .phonenumber, .gender{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.gender{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.selectbox{
+    /* margin-left: 10px; */
+}
+.avatar-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.avatar-text{
+    text-align: center;
+}
+.updateBtn{
+    margin-top: 8%;
+    margin-left: 5%;
+    width: 150px;
+    background-color: white;
+}
+.profile-background{
+    background-color: whitesmoke;
+}
+.profile-col-backgound{
+    background-color: white;
+    
+}
+.profile-menu a{
+    color: black;
+    text-decoration: none;
+    
+}
+.profile{
+    margin-top: 2%;
+}
+.username-text{
+    border: 0px solid;
+}

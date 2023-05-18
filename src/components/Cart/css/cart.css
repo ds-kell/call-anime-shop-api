@@ -1,0 +1,10 @@
+.cartBtn {
+    display: inline-block;
+}
+.buyBtn{
+    margin-left: 15px;
+    background-color: white;
+}
+.addToCartBtn{
+    background-color: white;
+}
