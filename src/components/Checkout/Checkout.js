@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react'
 import "./css/Checkout.css"
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 
 const accessToken = sessionStorage.getItem('utoken');
 
@@ -50,14 +50,33 @@ function Checkout() {
     const handlePaymentClick = (id) => {
         setSelectedPaymentId(id);
     };
+    const productsCartId = selectedProducts.map((product) => {
+        return product.productDetailDto.id;
+    });
     const billReq = {
-        paymentMethod: paymentMethods[selectedPaymentId].name,
-        productsCartDto: selectedProducts,
-        deliveryAddress : address,
-        shippingService : shippingServices[selectedServiceId],
+        productsCartId: productsCartId,
+        deliveryAddressId: address.id,
+        shippingServiceId: selectedServiceId,
+        paymentMethod: paymentMethods[selectedPaymentId-1].name,
     }
+    const navigate = useNavigate();
+
     const handleOrderClick = () => {
-        console.log(billReq)
+        console.log(billReq);
+        config = {
+            method: 'POST',
+            headers: { Authorization: 'Bearer ' + accessToken.slice(1, -1) }
+        };
+        axios.post('http://localhost:8088/api/user/order', billReq, config)
+            .then(response => {
+                console.log(response);
+                if (response.status === 200) {
+                    navigate('/bill-order');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
     return (
         <div className='address-background'>

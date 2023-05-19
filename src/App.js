@@ -10,6 +10,7 @@ import GetCart from './components/Cart/GetCart';
 import UserProfile from './components/Profile/UserProfile';
 import DeliveryAddress from './components/Address/DeliveryAddress';
 import Checkout from './components/Checkout/Checkout';
+import GetBill from './components/Checkout/GetBill';
 function App() {
   const { token, setToken } = useToken();
   return (
@@ -25,7 +26,9 @@ function App() {
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/profile' element={<UserProfile />} />
         <Route path='/address' element={<DeliveryAddress />} />
+        <Route path='/bill-order' element={<GetBill />} />
 
+        
       </Routes>
     </>
   );

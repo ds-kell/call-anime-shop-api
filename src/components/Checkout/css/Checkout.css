@@ -114,9 +114,18 @@
     border-radius: 2px;
     cursor: pointer;
     margin-left: 30px;
-  }
-  
-  .orderBtn:hover {
+}
+
+.orderBtn:hover {
     background-color: #7fa2a5;
     color: rgba(0, 0, 0, 0.925);
-  }
+}
+.product-bill-img{
+    height: 50px;
+    width: 50px;
+    /* border-radius: 5px; */
+}
+.cancel-order{
+    border: 0px solid;
+    background-color:  #85cdd2;
+}

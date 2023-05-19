@@ -3,11 +3,12 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import './css/GetCart.css'; // Import CSS file
 import { Link, useNavigate,  Navigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 // import { navigate } from 'gatsby';
 
-import Checkout from '../Checkout/Checkout';
+
+
 const accessToken = sessionStorage.getItem('utoken');
 let config = {};
 if (accessToken) {
