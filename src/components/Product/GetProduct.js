@@ -15,18 +15,20 @@ if (accessToken) {
 }
 
 function GetProduct() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.post('http://localhost:8088/api/products', config)
-      .then(response => {
+    async function fetchData() {
+      try {
+        const response = await axios.post('http://localhost:8088/api/products', config);
         setProducts(response.data.data);
-      })
-      .catch(error => {
+      } catch (error) {
         console.log(error);
-      });
-  }, []);
+      }
+    }
 
+    fetchData();
+  }, []);
 
   return (
     <div>    
