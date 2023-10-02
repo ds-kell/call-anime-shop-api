@@ -9,7 +9,7 @@ import GoogleLogin from 'react-google-login';
 
 async function loginUser(credentials) {
   try {
-    const response = await axios.post('http://localhost:8088/api/auth/signin', credentials);
+    const response = await axios.post('http://localhost:8088/api/auth/login', credentials);
     console.log(response.status)
     return response.data;
   } catch (error) {
