@@ -1,7 +1,10 @@
 .menu-bar {
-  background-color: #adcbcc;
-  padding-bottom: 1%;
-
+  background-color: #ffffff;
+  padding-bottom: 0.3%;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px 0px #999999;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .shopName {
@@ -10,39 +13,43 @@
   font-family: ans-serif;
   font-size: 40px;
   text-shadow: 3px 3px 3px #adcbcc;
-
   &:hover {
     transition: all 0.2s ease-in-out;
     /* background: #d8c8c8; */
     border-radius: 20px;
-    color: rgb(255, 255, 255);
+    color: #999999;
     text-shadow: 3px 3px 3px rgb(255, 255, 255);
     text-decoration: none;
   }
 }
 
-
 .search-btn {
-  border-radius: 10px;
+  border-radius: 0px 5px 5px 0px;
+  border-color: #999999;
+  border-style: solid;
   width: 100px;
   height: 35px;
-  margin-left: 0px;
   margin-top: 14px;
 }
 
-.search-box {
+.search-content {
   width: 80%;
   height: 35px;
-  margin-top: 13px;
-  border-radius: 10px;
-
+  padding-left: 10px;
+  margin-top: 14px;
+  border-radius: 5px 0px 0px 5px;
+  border-color: #999999;
+  border-style: solid;
+  &:focus{
+    border-color: red;
+  }
 }
 
 .cart-text {
   padding: 4px 0px 4px 22px;
   background-color: whitesmoke;
   border: solid 2px;
-  border-color: #000000;
+  border-color: #999999;
   border-radius: 10px;
   margin-top: 13px;
   color: rgb(0, 0, 0);
@@ -57,7 +64,7 @@
   }
 }
 
-.cart-text a{
+.cart-text a {
   color: rgba(0, 0, 0, 0.721);
   text-decoration: none;
 }

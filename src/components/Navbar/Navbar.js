@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './Style.css'
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Style.css";
 
 function Navbar() {
-  const uToken = sessionStorage.getItem('utoken');
-  const token = sessionStorage.getItem('token');
-  const savedUsername = localStorage.getItem('username');
+  const uToken = sessionStorage.getItem("utoken");
+  const token = sessionStorage.getItem("token");
+  const savedUsername = localStorage.getItem("username");
   const navigate = useNavigate();
   const logout = () => {
-    sessionStorage.clear('token');
-    sessionStorage.clear('utoken');
+    sessionStorage.clear("token");
+    sessionStorage.clear("utoken");
     // localStorage.clear('token');
     // localStorage.clear('utoken');
-  }
+  };
   const handleCartClick = () => {
     if (uToken) {
-      navigate('/cart');
+      navigate("/cart");
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   };
   const [isHovered, setIsHovered] = useState(false);
@@ -45,67 +45,27 @@ function Navbar() {
   };
 
   return (
-    <div className='menu-bar'>
-      <div className='row operations'>
-        <div className='col-md-8'></div>
-        <div className='col-md-2'>
-          <a>Thông báo | </a>
-          <a>Hỗ trợ | </a>
-          <a>Ngôn ngữ </a>
-        </div>
-        <div className='col-md-2 log-blk'>
-          {uToken ? (
-            <div style={{ position: 'relative' }}>
-              <a
-                href="/profile"
-                className="login-text"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-          {savedUsername}
-              </a>
-              {(isHovered || isHoveredOutside) && (
-                <div className='hover-logout'
-                  onMouseEnter={handleMouseEnterOutside}
-                  onMouseLeave={handleMouseLeaveOutside}
-                  onClick={logout}
-                >
-                  {/* Hiển thị nút logout khi hover */}
-                  <a href="/login" >Logout</a>
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className='log-blk'>
-              <div>
-                <a href="/login" className="login-text">Đăng nhập | </a>
-                <a href="/register" className="login-text"> Đăng ký</a>
-              </div>
-            </div>
-          )}
+    <div className="menu-bar">
+      <div className="col-2">
+        <div className="">
+          <Link style={{ textDecoration: "none" }} to="/">
+            <div className="shopName">VaAnh</div>
+          </Link>
         </div>
       </div>
-      <div className='row'>
-        <div className='col-md-3'>
-          <div className="">
-            <Link to="/">
-              <div className='shopName'>VaAnh</div>
-            </Link>
-          </div>
-        </div>
-        <div className='col-md-6'>
-          <form className="form-inline">
-            <input
-              type="text"
-              className="search-box"
-              placeholder="Search"
-            />
-            <button type="submit" className="search-btn">Search</button>
-          </form>
-        </div>
-        <div className='col-md-1 cart-blk'>
-          <div className="cart-text" onClick={handleCartClick}>
-            <a href="" >Giỏ hàng</a>
+      <div className="col-8">
+        <div className="row">
+          <div className="col-5">
+            <form className="form-inline">
+              <input
+                type="text"
+                className="search-content"
+                placeholder="Search"
+              />
+              <button type="submit" className="search-btn">
+                Search
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -113,3 +73,69 @@ function Navbar() {
   );
 }
 export default Navbar;
+
+// <div className='menu-bar'>
+// <div className='row operations'>
+//   <div className='col-md-8'></div>
+//   <div className='col-md-2'>
+//     <a>Thông báo | </a>
+//     <a>Hỗ trợ | </a>
+//     <a>Ngôn ngữ </a>
+//   </div>
+//   <div className='col-md-2 log-blk'>
+//     {uToken ? (
+//       <div style={{ position: 'relative' }}>
+//         <a
+//           href="/profile"
+//           className="login-text"
+//           onMouseEnter={handleMouseEnter}
+//           onMouseLeave={handleMouseLeave}
+//         >
+//     {savedUsername}
+//         </a>
+//         {(isHovered || isHoveredOutside) && (
+//           <div className='hover-logout'
+//             onMouseEnter={handleMouseEnterOutside}
+//             onMouseLeave={handleMouseLeaveOutside}
+//             onClick={logout}
+//           >
+//             {/* Hiển thị nút logout khi hover */}
+//             <a href="/login" >Logout</a>
+//           </div>
+//         )}
+//       </div>
+//     ) : (
+//       <div className='log-blk'>
+//         <div>
+//           <a href="/login" className="login-text">Đăng nhập | </a>
+//           <a href="/register" className="login-text"> Đăng ký</a>
+//         </div>
+//       </div>
+//     )}
+//   </div>
+// </div>
+// <div className='row'>
+//   <div className='col-md-3'>
+//     <div className="">
+//       <Link to="/">
+//         <div className='shopName'>VaAnh</div>
+//       </Link>
+//     </div>
+//   </div>
+//   <div className='col-md-6'>
+//     <form className="form-inline">
+//       <input
+//         type="text"
+//         className="search-box"
+//         placeholder="Search"
+//       />
+//       <button type="submit" className="search-btn">Search</button>
+//     </form>
+//   </div>
+//   <div className='col-md-1 cart-blk'>
+//     <div className="cart-text" onClick={handleCartClick}>
+//       <a href="" >Giỏ hàng</a>
+//     </div>
+//   </div>
+// </div>
+// </div>
