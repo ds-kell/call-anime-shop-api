@@ -62,15 +62,15 @@ function SignUp({ setToken }) {
           </h4>
           <form onSubmit={handleSubmit}>
             <div className='row'>
-              <div className='col-sm-4'>
+              {/* <div className='col-sm-4'>
                 <p>Tên đăng nhập</p>
                 <p>Email</p>
                 <p>Mật khẩu</p>
-              </div>
-              <div className='col-sm-8'>
-                <input className='username-input' type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <input className='username-input' type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <input className='username-input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              </div> */}
+              <div className='col-sm-12'>
+                <input placeholder='Tên đăng nhập' className='username-input' type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <input placeholder='email' className='username-input' type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input placeholder='Mật khẩu' className='username-input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
               </div>
             </div>
             <button type="submit" className='signup-btn'>Đăng ký</button>

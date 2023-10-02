@@ -65,7 +65,7 @@ const ShowProduct = ({ products }) => {
                     checked={selectedCategories.includes(category)}
                     onChange={() => handleCategoryChange(category)}
                   />
-                  {category}
+                  {' '}{category}
                 </label>
               ))}
             </div>
@@ -78,7 +78,7 @@ const ShowProduct = ({ products }) => {
                     checked={selectedBrands.includes(brand)}
                     onChange={() => handleBrandChange(brand)}
                   />
-                  {brand}
+                  {' '}{brand}
                 </label>
               ))}
             </div>

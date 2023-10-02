@@ -18,7 +18,7 @@ function GetProduct() {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    axios.post('http://localhost:8088/api/products', config)
+    axios.post('http://localhost:8088/api/product/products', config)
       .then(response => {
         setProducts(response.data.data);
       })

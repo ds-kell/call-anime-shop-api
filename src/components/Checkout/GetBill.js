@@ -43,7 +43,7 @@ function GetBill() {
                                             <th>Đơn giá</th>
                                             <th>Thành tiền</th>
                                             <th>Trạng thái </th>
-<th>Thao tác</th>
+                                            <th>Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
